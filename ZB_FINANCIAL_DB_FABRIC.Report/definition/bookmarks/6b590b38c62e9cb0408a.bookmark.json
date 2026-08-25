@@ -1,0 +1,1717 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "PL YRL ",
+  "name": "6b590b38c62e9cb0408a",
+  "options": {
+    "targetVisualNames": [
+      "874fa9085e709c03e837"
+    ]
+  },
+  "explorationState": {
+    "version": "1.26",
+    "activeSection": "59e760415b7867a0d7cc",
+    "sections": {
+      "59e760415b7867a0d7cc": {
+        "visualContainers": {
+          "0838e67714d4074c42a3": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "0ae8f330355dc407e8dd": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c8b3627c8a2190e8ea8e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 1 "
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 1 "
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "021b337610d5b8ce2072": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8857a0e788695142b399",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Account Type "
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "ae5f5831dd03800572e4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Amount BS"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "66381c64cca08a9ce55e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "623b97b6401ac5d37523",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 1 "
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "713ff997820ca03c6225",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e3d499e959aa9c09ad08",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Audit "
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "financialreportingmatrixD8A502553641450F8EAEB9BA40B2166E",
+              "isDrillDisabled": true,
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "874fa9085e709c03e837": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b7670f08cec7158003b4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Amount Adjusted"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0becdd23c30e67ca6748",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 1 "
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1ab9b8ac0a2349eec0be",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8a81f9ff7a4de956ec0d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Audit "
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "853c417345b8e5a2abb8",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "m",
+                        "Entity": "MAPPING",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "m"
+                                    }
+                                  },
+                                  "Property": "Account Type "
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'P/L'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Account Type "
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "97e9c001631856b2a6b5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Year"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "financialreportingmatrixD8A502553641450F8EAEB9BA40B2166E",
+              "isDrillDisabled": true,
+              "objects": {}
+            }
+          },
+          "d27d708eaa6567a821a9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "a82b3f8333b81cdb37d3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Account Type "
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "006a7d0f0d2eeae1ba04",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 1 "
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c38e7c20bd31d22d9e86",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "39647d0bcd3ee13b72d0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Audit "
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "5b1bdba7634a357e32d0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Year-Month"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "63ce3d26b5857d0e3dce",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Amount Adjusted"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "financialreportingmatrixD8A502553641450F8EAEB9BA40B2166E",
+              "isDrillDisabled": true,
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "dbe2bfb8e4867b398146": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c111f2e56d907b7c7710",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Account Type "
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "f0a364d70b8a043ed3b2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Amount Adjusted"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "db568070ae75090104e9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 1 "
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3a211d495eb406a007a3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a0ccd42a58982394953a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Map-Account"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3f5cdd94a9bad7129d97",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Year-Month"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "financialreportingmatrixD8A502553641450F8EAEB9BA40B2166E",
+              "isDrillDisabled": true,
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "1380d21b4070d2bd326c": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "159cb8106a300be100cb": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d6c925196ce967805aa0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Level Classification"
+                        }
+                      },
+                      "Property": "Sequence "
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "9e99f25736890b482a90",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Final Mapping"
+                        }
+                      },
+                      "Property": "Expense Account"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "ad56cb7f0c750d3b2d02",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Account Transaction"
+                        }
+                      },
+                      "Property": "offset_account_type"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Account Transaction"
+                        }
+                      },
+                      "Property": "offset_account_type"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "1305302c3a41d59a121b": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "490c2283282461040e04": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "667b93c6697b88719bb6": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "9103ac031477d1a096a3": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "32cb28a1749da50bd6d1": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "6af8fa713ece82ed6476": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "052c94cd99e67c846ab3",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "DateTable",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "In": {
+                                "Expressions": [
+                                  {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": "d"
+                                        }
+                                      },
+                                      "Property": "Financial Year"
+                                    }
+                                  }
+                                ],
+                                "Values": [
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "null"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'2028-29'"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'2029-30'"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'2030-31'"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'2027-28'"
+                                      }
+                                    }
+                                  ]
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Financial Year"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "18c8fc81c0a115ad5366",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Year"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Year"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Year"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "a1fbc36d5d08ce627939": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "a41a53884494218ea5c2": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "c163d32a5c94e3d02185": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "2b683d747e4e53c23b97": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f768f2afcb530f57ef61",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "IQRA TECH"
+                        }
+                      },
+                      "Property": "Account Type"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "d6c925196ce967805aa0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Level Classification"
+                        }
+                      },
+                      "Property": "Sequence "
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "1cccc7311eb8e36b7a3d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Account_Selector"
+                        }
+                      },
+                      "Property": "account_name"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Account_Selector"
+                        }
+                      },
+                      "Property": "account_name"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "510bab9859773842b08d": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "28901e4e3b0d09c83802",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 2"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 2"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "5404cde40360c7606805": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "6d78b51cac81a4b54985": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b6a07613d01badaa9c98",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Between'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "7308adf0a61b76eb03b3": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "0ec05ec5abb5cc799334",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "DateTable",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Not": {
+                            "Expression": {
+                              "In": {
+                                "Expressions": [
+                                  {
+                                    "Column": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": "d"
+                                        }
+                                      },
+                                      "Property": "Financial Year"
+                                    }
+                                  }
+                                ],
+                                "Values": [
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "null"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'2028-29'"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'2029-30'"
+                                      }
+                                    }
+                                  ],
+                                  [
+                                    {
+                                      "Literal": {
+                                        "Value": "'2030-31'"
+                                      }
+                                    }
+                                  ]
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Financial Year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "eb78ccaccb444d85d5ab",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Month Name"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Financial Year"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Financial Year"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "7f2f2bc2e901a55dbb29": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f091802637010b600904",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Account Type "
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "e3e1a550c2a4c83d02d5",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Financial Year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "40225363cd7335ec5529",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Amount Adjusted"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1e3968baec38b1233085",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 1 "
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "da322741d4808130db6a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e417f25b5b091a8b5d2a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Audit "
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "financialreportingmatrixD8A502553641450F8EAEB9BA40B2166E",
+              "isDrillDisabled": true,
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "a2d5f120060877576d32": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3cf2677fa806c639680d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Account Type "
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "53d671f559e951809a60",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Amount BS"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ab56a4707220a1834b98",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Month Name"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c8c70090c14c22245193",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 1 "
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "15f15a47d744da147c4b",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6521eaf70c60ce0042ad",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Audit "
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "financialreportingmatrixD8A502553641450F8EAEB9BA40B2166E",
+              "isDrillDisabled": true,
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "e18de848d1bb160ebced": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e552f7b00bdc0c680239",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Account Type "
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "1ad00ff180e00ea1e067",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Amount BS"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e96212ee25e8225569ea",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d9eebd88e0e3a774b1cb",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 1 "
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ff6b7fdbdc46125083d2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "13443e50c81d9041a0b1",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Audit "
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "financialreportingmatrixD8A502553641450F8EAEB9BA40B2166E",
+              "isDrillDisabled": true,
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "e3c6a07e91295d314080": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5cb6a72e9684aa0623e1",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Account Type "
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "72c6b7fe1abdca114291",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "All Measures"
+                        }
+                      },
+                      "Property": "Amount Adjusted"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c924014b300ed0056b15",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 1 "
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0c87740c8630288cd0ac",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Level 2"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "02726db62e000a6b0733",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DateTable"
+                        }
+                      },
+                      "Property": "Year-Month"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "65f315b1c381451a4807",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "MAPPING"
+                        }
+                      },
+                      "Property": "Audit "
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "financialreportingmatrixD8A502553641450F8EAEB9BA40B2166E",
+              "isDrillDisabled": true,
+              "objects": {},
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "78502ae6892e42787bc2": {
+            "singleVisual": {
+              "visualType": "pageNavigator",
+              "objects": {}
+            }
+          },
+          "846aaeca3101ea00419d": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "8b569c668289342e28c0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "be490aaa70b7cac30171",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Account Transaction"
+                        }
+                      },
+                      "Property": "_company_name"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Account Transaction"
+                        }
+                      },
+                      "Property": "_company_name"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "9c9178fe67b904940625": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "c338f6534ace928342c8": {
+            "singleVisual": {
+              "visualType": "bookmarkNavigator",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "0ca6de1dc740b037e0ba": {
+            "isHidden": false
+          },
+          "1f0c3b0e580205026b39": {
+            "isHidden": true
+          },
+          "299c0d102861e2017651": {
+            "isHidden": false
+          },
+          "73d4cc19796da0aa8b63": {
+            "isHidden": true
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "visible": {
+                "expr": {
+                  "Literal": {
+                    "Value": "true"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

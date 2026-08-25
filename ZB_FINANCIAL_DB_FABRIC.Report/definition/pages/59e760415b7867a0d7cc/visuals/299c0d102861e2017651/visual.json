@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "299c0d102861e2017651",
+  "position": {
+    "x": 58.059774220444588,
+    "y": 36.928462657327771,
+    "z": 14000,
+    "height": 394.08940232507894,
+    "width": 2100.0832588166422,
+    "tabOrder": 15000
+  },
+  "visualGroup": {
+    "displayName": "Gulf Botton",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

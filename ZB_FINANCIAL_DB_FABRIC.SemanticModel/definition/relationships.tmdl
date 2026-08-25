@@ -1,0 +1,32 @@
+relationship 58fbc2bd-4ffb-e4c1-05a4-9130a7e42070
+	fromColumn: 'Account Transaction'.'Month Year'
+	toColumn: 'Exchange Rate'.Month-Year
+
+relationship b26210c2-0f3f-61ae-65da-931665db039e
+	fromColumn: 'Account Transaction'.account_name
+	toColumn: MAPPING.Map-Account
+
+relationship 860f3f25-8f5f-44e6-a10c-6a78d5da62e0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Account Transaction'._fetched_at
+	toColumn: LocalDateTable_b5b5540b-31ef-4fe7-9496-c7fcbf9200ad.Date
+
+relationship 539b9506-ed9e-4f71-a56f-1962200d928b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Account Transaction'._report_start
+	toColumn: LocalDateTable_ebab9514-a606-44fb-bb51-c7010985b423.Date
+
+relationship 84849d6f-ae16-4be6-abaa-5519f93bb58c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Account Transaction'._report_end
+	toColumn: LocalDateTable_c8b9affb-43bb-4876-b3a0-130865f556f7.Date
+
+relationship b3c4dc88-3575-3820-bf5a-f286e3f5e80e
+	fromColumn: 'Account Transaction'.date
+	toColumn: DateTable.Date
+
+relationship 46b57e84-0c35-6225-445a-a43cefb0e47c
+	isActive: false
+	fromColumn: etl_run_log.LAST_REFRESH_DATE
+	toColumn: DateTable.Date
+

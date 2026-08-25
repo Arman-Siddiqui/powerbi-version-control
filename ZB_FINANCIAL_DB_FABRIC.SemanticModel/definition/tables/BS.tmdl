@@ -1,0 +1,67 @@
+table BS
+	lineageTag: ad7e33b4-8858-43ac-9cb7-727bef9bf0f7
+
+	measure 'BS Category Amount' =
+			
+			
+			VAR SelectedCategory =
+			    SELECTEDVALUE('BS'[Category])
+			
+			VAR Assets =
+			    CALCULATE(
+			        SUM('Account Transaction'[Amountt]),
+			        'MAPPING'[BS Level] = "Total Assets"
+			    )
+			
+			VAR LiabilitiesEquity =
+			    CALCULATE(
+			        SUM('Account Transaction'[Amountt]),
+			        'MAPPING'[BS Level] IN {
+			            "Retained Earning & CY Earning",
+			            "Total Liabilities & Equities"
+			        }
+			    )
+			
+			RETURN
+			
+			SWITCH(
+			    SelectedCategory,
+			    "Assets", Assets,
+			    "Liabilities & Equities", LiabilitiesEquity
+			)
+		lineageTag: cd9dd305-2750-4326-8d8a-f852c68087e9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Category
+		lineageTag: db7c8752-7c23-4316-b338-a74627e3420b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Category]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Index'
+		formatString: 0
+		lineageTag: 877a96cd-2a3e-4b42-b84a-10179b21f274
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Sort Index]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BS = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Category", STRING,
+				    "Sort Index", INTEGER,
+				    {
+				        {"Assets", 1},
+				        {"Liabilities & Equities", 2}
+				    }
+				)
+
+	annotation PBI_Id = 209bfdc97d5f42438ca339d07dc39b23
+

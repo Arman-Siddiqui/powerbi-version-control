@@ -1,0 +1,26 @@
+table 'Expense Change %'
+	lineageTag: 8ff15cf1-0f36-44dc-b37e-c40bcbf33316
+
+	measure 'Expense Change % Value' = SELECTEDVALUE('Expense Change %'[Expense Change %])
+		formatString: 0
+		lineageTag: f05b41ee-5943-4d71-801a-41850a845083
+
+	column 'Expense Change %'
+		formatString: 0
+		lineageTag: af586d38-0698-498c-9e03-821cf5e82820
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Expense Change %' = calculated
+		mode: import
+		source = GENERATESERIES(-50, 50, 1)
+
+	annotation PBI_Id = b80d6f81d200430585830826374bc55d
+

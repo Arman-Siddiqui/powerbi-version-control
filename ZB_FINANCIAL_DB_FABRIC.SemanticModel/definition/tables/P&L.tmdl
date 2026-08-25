@@ -1,0 +1,93 @@
+table P&L
+	lineageTag: 649c0c29-328b-41a0-9a6b-e0d519b94e4a
+
+	measure 'P&L Category Amount' =
+			
+			
+			VAR SelectedCategory =
+			    SELECTEDVALUE('P&L'[Category])
+			
+			VAR Revenue =
+			    CALCULATE(
+			        [Amount Adjusted],
+			        'MAPPING'[Level 1 ] = "Operating Income"
+			    )
+			
+			VAR Expense =
+			    CALCULATE(
+			        [Amount Adjusted],
+			        'MAPPING'[Level 1 ] = "Operating Expense"
+			    )
+			
+			VAR ProfitLoss =
+			    Revenue - Expense
+			
+			RETURN
+			
+			IF(
+			    NOT ISFILTERED('P&L'[Category]),
+			
+			    -- No slicer selection: show all categories
+			    SWITCH(
+			        MAX('P&L'[Category]),
+			        "REVENUE", Revenue,
+			        "EXPENSES", Expense,
+			        "PROFIT & LOSS", ProfitLoss
+			    ),
+			
+			    -- Slicer selected: show only selected categories
+			    SWITCH(
+			        SelectedCategory,
+			        "REVENUE", Revenue,
+			        "EXPENSES", Expense,
+			        "PROFIT & LOSS", ProfitLoss
+			    )
+			)
+		lineageTag: 01b62e2d-26bf-4340-b7ec-be46a6bfc662
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P&L Category Amount SPLY' =
+			
+			CALCULATE(
+			    [Amount Converted pl],
+			    SAMEPERIODLASTYEAR('DateTable'[Date])
+			)
+		lineageTag: 0958b926-a75c-484a-bbbe-dfd7c5b8721e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Category
+		lineageTag: 342cb5a5-60f1-4fba-918f-4844055236d9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Category]
+		sortByColumn: 'Sort Index'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sort Index'
+		formatString: 0
+		lineageTag: 436648d5-0d7c-45f1-ab0f-a5bb8b39c0df
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Sort Index]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition P&L = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Category", STRING,
+				    "Sort Index", INTEGER,
+				    {
+				        {"REVENUE", 1},
+				        {"EXPENSES", 2},
+				        {"PROFIT & LOSS", 3}
+				    }
+				)
+
+	annotation PBI_Id = 0009229209d84ff19db0026da63e9b8c
+

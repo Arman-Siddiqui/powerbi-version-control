@@ -1,0 +1,114 @@
+table MAPPING
+	lineageTag: f8098620-6c42-4dca-902c-5b07ae309394
+
+	column 'Level 1 '
+		dataType: string
+		lineageTag: 01e2eaf7-74cf-4ef1-b876-25a85737bd67
+		summarizeBy: none
+		sourceColumn: "Level 1 "
+		sortByColumn: 'Sequence.1'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 2'
+		dataType: string
+		lineageTag: 29899a3a-39c5-469e-af8b-ffded96b66e8
+		summarizeBy: none
+		sourceColumn: Level 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Expense Acc'
+		dataType: string
+		lineageTag: 5d7d976b-a5b2-4182-9332-344a1e5654db
+		summarizeBy: none
+		sourceColumn: Expense Acc
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Type '
+		dataType: string
+		lineageTag: 4fbd8ff6-cb8e-452e-8f62-c2ad2f39e045
+		summarizeBy: none
+		sourceColumn: "Account Type "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category '
+		dataType: string
+		lineageTag: c8864a7b-c955-48ed-a56e-3c16cc034184
+		summarizeBy: none
+		sourceColumn: "Category "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Audit '
+		dataType: string
+		lineageTag: 50f20e8e-f74f-49ff-b4ce-56200e168d78
+		summarizeBy: none
+		sourceColumn: "Audit "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Expense Category '
+		dataType: string
+		lineageTag: 975d2255-0947-46b7-b81a-d9508609f4c6
+		summarizeBy: none
+		sourceColumn: "Expense Category "
+
+		annotation SummarizationSetBy = Automatic
+
+	column Map-Account
+		dataType: string
+		lineageTag: e6ee36e1-8620-4e4d-b0d8-16b54f1e1289
+		summarizeBy: none
+		sourceColumn: Map-Account
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sequence BS'
+		dataType: int64
+		formatString: 0
+		lineageTag: cfb6b7e4-8aee-447e-bbed-4bec8a70fd6e
+		summarizeBy: none
+		sourceColumn: Sequence BS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BS Level'
+		dataType: string
+		lineageTag: 7de6875f-aa4c-40f2-a4e0-af352fd828ee
+		summarizeBy: none
+		sourceColumn: BS Level
+		sortByColumn: 'Sequence BS'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sequence.1'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2b8ef3ad-73d5-4a03-a3b6-57d149bfa9c8
+		summarizeBy: none
+		sourceColumn: Sequence.1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition MAPPING = m
+		mode: import
+		queryGroup: 'All Companies'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"BS Level" = _t, Sequence = _t, #"Level 1 " = _t, #"Level 2" = _t, #"Expense Acc" = _t, #"Account Type " = _t, #"Category " = _t, #"Audit " = _t, #"Expense Category " = _t, #"Map-Account" = _t, Sequence.1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"BS Level", type text}, {"Sequence", Int64.Type}, {"Level 1 ", type text}, {"Level 2", type text}, {"Expense Acc", type text}, {"Account Type ", type text}, {"Category ", type text}, {"Audit ", type text}, {"Expense Category ", type text}, {"Map-Account", type text}, {"Sequence.1", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Sequence", "Sequence BS"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

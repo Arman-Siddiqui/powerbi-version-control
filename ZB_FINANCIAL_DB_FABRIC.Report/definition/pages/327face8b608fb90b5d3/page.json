@@ -1,0 +1,194 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "327face8b608fb90b5d3",
+  "displayName": "Refresh History",
+  "displayOption": "FitToPage",
+  "height": 1300,
+  "width": 2200,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "153ba06f262707110b6e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DateTable"
+              }
+            },
+            "Property": "Month Name"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "e8c92e37d2854ae0e001",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DateTable"
+              }
+            },
+            "Property": "Year"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "9ae8388fa380b9701761",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MAPPING"
+              }
+            },
+            "Property": "Map-Account"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "3be50f03818eeccee370",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MAPPING"
+              }
+            },
+            "Property": "Expense Acc"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "f9847885d143ce6c0234",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MAPPING"
+              }
+            },
+            "Property": "Level 1 "
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "6b82f0da705444c4a0d9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MAPPING"
+              }
+            },
+            "Property": "Level 2"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "d45433e17379769c8a1f",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "6b3cf5bb951db4cee720",
+        "boundFilter": "153ba06f262707110b6e",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DateTable"
+              }
+            },
+            "Property": "Month Name"
+          }
+        }
+      },
+      {
+        "name": "44e27042d2374edc8385",
+        "boundFilter": "e8c92e37d2854ae0e001",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DateTable"
+              }
+            },
+            "Property": "Year"
+          }
+        }
+      },
+      {
+        "name": "940cd6ce900bc092e3c3",
+        "boundFilter": "9ae8388fa380b9701761",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MAPPING"
+              }
+            },
+            "Property": "Map-Account"
+          }
+        }
+      },
+      {
+        "name": "efb745065b60b018c60b",
+        "boundFilter": "3be50f03818eeccee370",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MAPPING"
+              }
+            },
+            "Property": "Expense Acc"
+          }
+        }
+      },
+      {
+        "name": "31963a8094200ee90853",
+        "boundFilter": "f9847885d143ce6c0234",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MAPPING"
+              }
+            },
+            "Property": "Level 1 "
+          }
+        }
+      },
+      {
+        "name": "6b283dee7536e93c9a16",
+        "boundFilter": "6b82f0da705444c4a0d9",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MAPPING"
+              }
+            },
+            "Property": "Level 2"
+          }
+        }
+      }
+    ]
+  },
+  "type": "Drillthrough"
+}

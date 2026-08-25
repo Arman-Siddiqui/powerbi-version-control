@@ -1,0 +1,83 @@
+table etl_run_log
+	lineageTag: aa112ffd-d6c8-48b0-8dcf-6798cfd4e4b8
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: ad8d7112-0ac3-4728-9b47-b947bd037009
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column COMPANY_NAME
+		dataType: string
+		lineageTag: d04bd7d5-6576-4d49-b136-2581cb608dba
+		summarizeBy: none
+		sourceColumn: COMPANY_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TABLE NAME'
+		dataType: string
+		lineageTag: 2fba9bc8-690a-40c7-ac4f-b22d949e1be3
+		summarizeBy: none
+		sourceColumn: TABLE NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_REFRESH_DATE
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 37022a24-2efd-4c78-a0f7-84a8c0bf55f8
+		summarizeBy: none
+		sourceColumn: LAST_REFRESH_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column TOTAL_FETCHED
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fd7a0cc-43dc-4c1c-aef9-7641a698d609
+		summarizeBy: sum
+		sourceColumn: TOTAL_FETCHED
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTAL_INSERTED
+		dataType: int64
+		formatString: 0
+		lineageTag: 39bfbda6-bce3-4761-b121-4a286f45c41b
+		summarizeBy: sum
+		sourceColumn: TOTAL_INSERTED
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATUS
+		dataType: string
+		lineageTag: 90de41c5-e1a5-4be5-8674-a0b965695f67
+		summarizeBy: none
+		sourceColumn: STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ERROR MESSAGE'
+		dataType: string
+		lineageTag: 4c855f4f-b3cf-42c0-a5c4-96dbc2726003
+		summarizeBy: none
+		sourceColumn: ERROR MESSAGE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition etl_run_log = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("jqxnwwvnoenehap22sg2n7tlia-to6c3xvgofvezbuoyrhiwgcrdm.datawarehouse.fabric.microsoft.com", "Zoho_Books_Lakehouse"),
+				    dbo_etl_run_log = Source{[Schema="dbo",Item="etl_run_log"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(dbo_etl_run_log,{{"TABLE_NAME", "TABLE NAME"}, {"ERROR_MESSAGE", "ERROR MESSAGE"}})
+				in
+				    #"Renamed Columns"
+

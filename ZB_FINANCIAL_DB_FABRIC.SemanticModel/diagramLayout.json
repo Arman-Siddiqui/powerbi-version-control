@@ -1,0 +1,162 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 198.4257335526973,
+        "y": 5452.6745447802077
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 975.57720825604565,
+            "y": 5639.3684952339672
+          },
+          "nodeIndex": "DateTable",
+          "nodeLineageTag": "cf2af0e4-9d7f-4a52-ad4a-4dc2f785452c",
+          "size": {
+            "height": 258.57142857142856,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 1381.7446986326529,
+            "y": 6252.3589687659505
+          },
+          "nodeIndex": "All Measures",
+          "nodeLineageTag": "5e5f129d-9049-4e1e-b8ed-d6df1793ae04",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 936.19987638012344,
+            "y": 5971.5684513688493
+          },
+          "nodeIndex": "Account Transaction",
+          "nodeLineageTag": "81d51055-e42c-4366-8a5f-94b3ef32e438",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 2439.0836716527792,
+            "y": 6060.1551063381512
+          },
+          "nodeIndex": "Expense Change %",
+          "nodeLineageTag": "8ff15cf1-0f36-44dc-b37e-c40bcbf33316",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 496.11820647049075,
+            "y": 5578.968503209443
+          },
+          "nodeIndex": "Account_Selector",
+          "nodeLineageTag": "a5385be1-a807-42fe-8677-6d267e97daff",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 450.25325620769564,
+            "y": 6233.9350708472839
+          },
+          "nodeIndex": "MAPPING",
+          "nodeLineageTag": "f8098620-6c42-4dca-902c-5b07ae309394",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1391.9285568012333,
+            "y": 5938.7732745025432
+          },
+          "nodeIndex": "Exchange Rate",
+          "nodeLineageTag": "0d41af7f-e02d-4038-9508-f36beedaf192",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2430.4378461938404,
+            "y": 5701.1034855637017
+          },
+          "nodeIndex": "CurrencySelector",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2642.7064270318369,
+            "y": 4921.8639090785891
+          },
+          "nodeIndex": "P&L",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2744.5178047213658,
+            "y": 4189.7835114574
+          },
+          "nodeIndex": "BS",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1545.8513546410693,
+            "y": 5485.30700728104
+          },
+          "nodeIndex": "etl_run_log",
+          "nodeLineageTag": "aa112ffd-d6c8-48b0-8dcf-6798cfd4e4b8",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 49.590342827053796,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

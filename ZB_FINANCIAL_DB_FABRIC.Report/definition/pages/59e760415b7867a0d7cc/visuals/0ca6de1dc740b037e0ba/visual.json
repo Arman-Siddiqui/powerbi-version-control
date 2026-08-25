@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "0ca6de1dc740b037e0ba",
+  "position": {
+    "x": 31,
+    "y": 431.47587178584007,
+    "z": 16000,
+    "height": 828.52412821415987,
+    "width": 2138.7780908770692,
+    "tabOrder": 14000
+  },
+  "visualGroup": {
+    "displayName": "Gulf Matrix",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

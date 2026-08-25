@@ -1,0 +1,25 @@
+table CurrencySelector
+	lineageTag: 0eceae11-cba2-4821-b224-cb422084fd34
+
+	column Currency
+		lineageTag: a3ffa494-60da-47c1-b1b4-a141c34cd9f8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Currency]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CurrencySelector = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Currency", STRING,
+				    {
+				        {"Base"},{"AED"},
+				        {"INR"}
+				    }
+				)
+
+	annotation PBI_Id = fde91fc56c2e4ac8a09df941124205e4
+

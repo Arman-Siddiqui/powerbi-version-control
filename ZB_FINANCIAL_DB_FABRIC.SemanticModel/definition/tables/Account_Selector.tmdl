@@ -1,0 +1,17 @@
+table Account_Selector
+	lineageTag: a5385be1-a807-42fe-8677-6d267e97daff
+
+	column account_name
+		lineageTag: 99a4c30f-eb7e-4f2f-96d9-6acf8400b428
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Account Transaction[account_name]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Account_Selector = calculated
+		mode: import
+		source = DISTINCT('Account Transaction'[account_name])
+
+	annotation PBI_Id = 1fd7b736590f4400862f4295df37c672
+

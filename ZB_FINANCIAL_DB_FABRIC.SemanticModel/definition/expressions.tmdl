@@ -1,0 +1,13 @@
+expression 'gold_all_companies (2)' =
+		let
+		    Source = Sql.Database("jqxnwwvnoenehap22sg2n7tlia-to6c3xvgofvezbuoyrhiwgcrdm.datawarehouse.fabric.microsoft.com", "Zoho_Books_Lakehouse"),
+		    dbo_gold_all_companies = Source{[Schema="dbo",Item="gold_all_companies"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(dbo_gold_all_companies,{{"date", type date}})
+		in
+		    #"Changed Type"
+	lineageTag: fc8de230-14a4-47c1-b8d0-f92267129d8c
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

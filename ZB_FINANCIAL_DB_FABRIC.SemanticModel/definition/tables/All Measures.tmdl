@@ -1,0 +1,770 @@
+table 'All Measures'
+	lineageTag: 5e5f129d-9049-4e1e-b8ed-d6df1793ae04
+
+	measure 'Total Credit' =
+			
+			SUM('Account Transaction'[credit])
+		lineageTag: 0a5c6ee6-8f3b-4009-a6e0-801a66a9d82f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Debit' =
+			
+			SUM('Account Transaction'[debit])
+		lineageTag: fd811c41-5936-4d80-b9f6-f0113529e5ae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Profit' =
+			
+			[Total Credit] - [Total Debit]
+		lineageTag: b5430685-c01c-4e9c-8032-26694d2b5482
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Net Balance' = [Total Credit] - [Total Debit]
+		lineageTag: 3ff517e6-1175-4406-86ea-f8bd413da725
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Credit' =
+			
+			TOTALYTD([Total Credit], 'Account Transaction'[date])
+		lineageTag: c3026bd6-5f8f-4db8-9dbc-573a7acce693
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'IT REV' =
+			
+			CALCULATE([Amount Converted pl],
+			  FILTER('Account Transaction', 'Account Transaction'[_company_name] = "IQRA IT"))
+		lineageTag: a016b2d1-93c8-4e3b-b8da-cef3dd9b7f9d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'TECH REV' =
+			
+			CALCULATE([Amount Converted pl],
+			  FILTER('Account Transaction', 'Account Transaction'[_company_name] = "IQRA TECH"))
+		lineageTag: b8be6e1f-5a6f-43fb-96ec-b2efc3ccf7da
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit Margin %' =
+			
+			DIVIDE([Net Balance], [Total Credit], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5cbd1f29-17ee-4506-a065-72c9878e0760
+
+	measure 'Cumulative Credit' =
+			
+			CALCULATE(
+			  [Total Credit],
+			  FILTER(
+			    ALL('Account Transaction'[date]),
+			    'Account Transaction'[date] <= MAX('Account Transaction'[date])
+			  )
+			)
+		lineageTag: 9eedd7e8-8dd6-416b-bb06-c1583776944b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Prior Month Credit' =
+			
+			CALCULATE([Total Credit],
+			  PREVIOUSMONTH(DateTable[Month Name]))
+		lineageTag: b09d3330-c67c-4cd7-825c-2b5e5434b9cb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM Growth %' =
+			
+			DIVIDE(
+			  [Total Credit] - [Prior Month Credit],
+			  [Prior Month Credit]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 6fc4dbde-a5c0-4d83-aecb-fdf4f571e2a8
+
+	measure 'SPLY Credit' =
+			
+			CALCULATE([Total Credit],
+			  SAMEPERIODLASTYEAR('Account Transaction'[date]))
+		lineageTag: 0f248098-b268-4ef3-b82b-f06817182d1e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YoY Growth %' =
+			
+			DIVIDE(
+			  [Total Credit] - [SPLY Credit],
+			  [SPLY Credit], 0
+			) * 100
+		lineageTag: b1bcfc45-a703-46bb-92e8-e97fa27c4984
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM Display' =
+			
+			VAR Growth = [MoM Growth %]
+			VAR Arrow =
+			    IF(Growth >= 0, "▲", "▼")
+			RETURN
+			    Arrow & " " &
+			    FORMAT(Growth, "0.0%") &
+			    " vs last month"
+		lineageTag: 2ca42f44-4a76-4905-97a3-195190b171d6
+
+	measure Measure =
+			
+			VAR OperatingIncome =
+			    CALCULATE(
+			        SUM('Account Transaction'[Amountt]),
+			        ALL('MAPPING'),
+			        'MAPPING'[Level 1 ] = "Operating Income"
+			    )
+			VAR COGS =
+			    CALCULATE(
+			        SUM('Account Transaction'[Amountt]),
+			        ALL('MAPPING'),
+			        'MAPPING'[Level 1 ] = "Cost of Goods Sold"
+			    )
+			VAR CurrentLevel = MAX('MAPPING'[Level 1 ])
+			RETURN
+			    IF(
+			        CurrentLevel = "Gross Profit",
+			        OperatingIncome - COGS,
+			        SUM('Account Transaction'[Amountt])
+			    )
+		lineageTag: 3247b243-97d7-4e5d-aa58-9ecd2e3bd8cd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Check Level 2' = MAX('MAPPING'[Level 2])
+		lineageTag: 44b4ca85-1d86-4311-9a98-407fe9cb9642
+
+	measure 'Amount Adjusted' = ```
+			
+			SUMX(
+			    'Account Transaction',
+			    'Account Transaction'[Amountt] *
+			    IF(
+			        RELATED('MAPPING'[Level 1 ]) = "Operating Income",
+			        -1,
+			        1
+			    )
+			) 
+			
+			```
+		formatString: #,0
+		lineageTag: 96c0bbfc-f858-4ac3-ac3e-767119bd4b3a
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Amount BS' =
+			
+			SUMX(
+			    'Account Transaction',
+			    'Account Transaction'[Amountt] *
+			    IF(
+			        SELECTEDVALUE(MAPPING[Level 1 ]) IN {
+			            "Current Liabilities","Other Current Liabilities","Equities"
+			        },
+			        -1,
+			        1
+			    )
+			)
+		formatString: #,0
+		lineageTag: 034f40fd-e24e-4625-9add-4ec5e39704c5
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Retained Earnings' =
+			
+			CALCULATE(
+			    [Net Profit],
+			    FILTER(
+			        ALL('DateTable'),
+			        'DateTable'[Date] < MIN('DateTable'[Date])
+			    )
+			)
+		lineageTag: d0bed4e2-26f8-4809-889b-330093afbfb2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'BS Value' =
+			
+			VAR CurrentItem = SELECTEDVALUE('MAPPING'[Level 2])
+			RETURN
+			SWITCH(
+			    TRUE(),
+			
+			    CurrentItem = "Current Year Earnings", [Net Profit],
+			
+			    CurrentItem = "Retained Earnings", [Retained Earnings],
+			
+			    [Amount BS]
+			)
+		lineageTag: 5ce42ee1-a6a8-47e0-ac46-970dc82d17c0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Debit =
+			
+			IF(
+			    SUM('Account Transaction'[Amountt]) > 0,
+			    SUM('Account Transaction'[Amountt]),
+			    BLANK()
+			)
+		lineageTag: 72d1a120-7990-4ceb-9754-2560042be9d2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Credit =
+			
+			IF(
+			    SUM('Account Transaction'[Amountt]) < 0,
+			    ABS(SUM('Account Transaction'[Amountt])),
+			    BLANK()
+			)
+		lineageTag: fc3ba384-dc50-488e-b820-43ee0bccb184
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Running Balance' =
+			
+			CALCULATE(
+			    SUM('Account Transaction'[Amountt]),
+			    FILTER(
+			        ALLSELECTED('Account Transaction'),
+			        'Account Transaction'[date] <= MAX('Account Transaction'[date])
+			    )
+			)
+		lineageTag: 1e6c8805-bfad-4159-863f-5b91ec979598
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Transaction Value' =
+			
+			AVERAGE('Account Transaction'[Amountt])
+		lineageTag: 03baf189-0cf7-4ce7-b5f1-9ebb471cc8a1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Indian Format Amount' = ```
+			
+			VAR _Num = [Amount Adjusted]
+			VAR _Abs = ABS(_Num)
+			VAR _Str = FORMAT(_Abs, "0")
+			VAR _Len = LEN(_Str)
+			
+			VAR _Formatted = 
+			    SWITCH(
+			        TRUE(),
+			        _Len <= 3,  _Str,
+			        _Len = 4,   LEFT(_Str,1) & "," & RIGHT(_Str,3),
+			        _Len = 5,   LEFT(_Str,2) & "," & RIGHT(_Str,3),
+			        _Len = 6,   LEFT(_Str,1) & "," & MID(_Str,2,2) & "," & RIGHT(_Str,3),
+			        _Len = 7,   LEFT(_Str,2) & "," & MID(_Str,3,2) & "," & RIGHT(_Str,3),
+			        _Len = 8,   LEFT(_Str,1) & "," & MID(_Str,2,2) & "," & MID(_Str,4,2) & "," & RIGHT(_Str,3),
+			        _Len = 9,   LEFT(_Str,2) & "," & MID(_Str,3,2) & "," & MID(_Str,5,2) & "," & RIGHT(_Str,3),
+			        _Len = 10,  LEFT(_Str,1) & "," & MID(_Str,2,2) & "," & MID(_Str,4,2) & "," & MID(_Str,6,2) & "," & RIGHT(_Str,3),
+			        _Str
+			    )
+			
+			RETURN
+			    IF(_Num < 0, "-" & _Formatted, _Formatted)
+			```
+		lineageTag: 7d69ff74-d586-4c2d-bdc1-0aed54a629ca
+
+	measure 'Amount Adjusted Cumulative' =
+			
+			CALCULATE(
+			    [Amount Adjusted],
+			    FILTER(
+			        ALLSELECTED('DateTable'[Date]),
+			        'DateTable'[Date] <= MAX('DateTable'[Date])
+			    )
+			)
+		formatString: #,0
+		lineageTag: 3cac2893-0323-4ab9-b86c-d20f2505f4df
+
+	measure 'Amount Selected Cumulative' =
+			
+			CALCULATE(
+			    [Amount Converted],
+			    FILTER(
+			        ALL('DateTable'[Date]),
+			        'DateTable'[Date] <= MAX('DateTable'[Date])
+			    )
+			)
+		formatString: #,0
+		lineageTag: bbbe8062-2097-425e-8b71-af0501028e7b
+
+	measure 'Amount Converted' =
+			
+			
+			VAR SelectedCurrency =
+			    SELECTEDVALUE(
+			        CurrencySelector[Currency],
+			        "Base"
+			    )
+			
+			RETURN
+			
+			SUMX(
+			    'Account Transaction',
+			
+			    VAR CompanyName =
+			        TRIM(UPPER('Account Transaction'[_company_name]))
+			
+			    VAR IsINRCompany =
+			        CompanyName IN {"IQRA IT","IQRA TECH"}
+			
+			    VAR INRtoAED =
+			        RELATED('Exchange Rate'[INR_TO_AED])
+			
+			    VAR AEDtoINR =
+			        RELATED('Exchange Rate'[Aed to Inr])
+			
+			    VAR Amount =
+			        [Amount Adjusted]
+			
+			
+			    RETURN
+			
+			    SWITCH(
+			
+			        SelectedCurrency,
+			
+			        "Base",
+			            Amount,
+			
+			        "INR",
+			            IF(
+			                IsINRCompany,
+			                Amount,
+			                Amount * AEDtoINR
+			            ),
+			
+			        "AED",
+			            IF(
+			                IsINRCompany,
+			                Amount * INRtoAED,
+			                Amount
+			            )
+			    )
+			)
+		formatString: #,0
+		lineageTag: c5b9393c-38fe-45a0-98fb-11fe87753efb
+
+	measure 'Previous Year Amount Adjusted' =
+			
+			CALCULATE(
+			    [Amount Adjusted],
+			    SAMEPERIODLASTYEAR('DateTable'[Date])
+			)
+		lineageTag: f4eff1c4-72b0-42ac-85ee-ca564d00f09a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit and Loss' = CALCULATE([Amount Adjusted],MAPPING[Level 1 ] = "operating Income") - CALCULATE([Amount Adjusted],MAPPING[Level 1 ] = "operating Expense")
+		lineageTag: b1ec039c-8e6a-4174-a601-8a7f03c34198
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Amount Converted pl' =
+			
+			
+			VAR SelectedCurrency =
+			    SELECTEDVALUE(
+			        CurrencySelector[Currency],
+			        "Base"
+			    )
+			
+			RETURN
+			
+			SUMX(
+			    'Account Transaction',
+			
+			    VAR CompanyName =
+			        TRIM(UPPER('Account Transaction'[_company_name]))
+			
+			    VAR IsINRCompany =
+			        CompanyName IN {"IQRA IT","IQRA TECH"}
+			
+			    VAR INRtoAED =
+			        RELATED('Exchange Rate'[INR_TO_AED])
+			
+			    VAR AEDtoINR =
+			        RELATED('Exchange Rate'[Aed to Inr])
+			
+			    VAR Amount =
+			        'P&L'[P&L Category Amount]
+			
+			
+			    RETURN
+			
+			    SWITCH(
+			
+			        SelectedCurrency,
+			
+			        "Base",
+			            Amount,
+			
+			        "INR",
+			            IF(
+			                IsINRCompany,
+			                Amount,
+			                Amount * AEDtoINR
+			            ),
+			
+			        "AED",
+			            IF(
+			                IsINRCompany,
+			                Amount * INRtoAED,
+			                Amount
+			            )
+			    )
+			)
+		formatString: 0
+		lineageTag: 71d5a329-fb56-4d7e-ac00-c2e0f255f2cc
+
+	measure 'GULF REV' =
+			
+			CALCULATE([Amount Converted pl],
+			  FILTER('Account Transaction', 'Account Transaction'[_company_name] = "GULF LLC"))
+		lineageTag: ff41e9ce-582f-4d43-9731-6fe27098c66f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'IT OFFSHORE REV' =
+			
+			CALCULATE([Amount Converted pl],
+			  FILTER('Account Transaction', 'Account Transaction'[_company_name] = "IT OFFSHORE"))
+		lineageTag: b6159938-6fd8-4931-916c-735cbfe9e9f1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Credit Converted' =
+			
+			
+			VAR SelectedCurrency =
+			    SELECTEDVALUE(
+			        CurrencySelector[Currency],
+			        "Base"
+			    )
+			
+			RETURN
+			
+			SUMX(
+			    'Account Transaction',
+			
+			    VAR CompanyName =
+			        TRIM(UPPER('Account Transaction'[_company_name]))
+			
+			    VAR IsINRCompany =
+			        CompanyName IN {"IQRA IT","IQRA TECH"}
+			
+			    VAR INRtoAED =
+			        RELATED('Exchange Rate'[INR_TO_AED])
+			
+			    VAR AEDtoINR =
+			        RELATED('Exchange Rate'[Aed to Inr])
+			
+			    VAR Amount =
+			        'Account Transaction'[credit]
+			
+			
+			    RETURN
+			
+			    SWITCH(
+			
+			        SelectedCurrency,
+			
+			        "Base",
+			            Amount,
+			
+			        "INR",
+			            IF(
+			                IsINRCompany,
+			                Amount,
+			                Amount * AEDtoINR
+			            ),
+			
+			        "AED",
+			            IF(
+			                IsINRCompany,
+			                Amount * INRtoAED,
+			                Amount
+			            )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 88897d25-42c0-4f28-8973-d82181f629e3
+
+	measure 'Debit Converted' =
+			
+			
+			VAR SelectedCurrency =
+			    SELECTEDVALUE(
+			        CurrencySelector[Currency],
+			        "Base"
+			    )
+			
+			RETURN
+			
+			SUMX(
+			    'Account Transaction',
+			
+			    VAR CompanyName =
+			        TRIM(UPPER('Account Transaction'[_company_name]))
+			
+			    VAR IsINRCompany =
+			        CompanyName IN {"IQRA IT","IQRA TECH"}
+			
+			    VAR INRtoAED =
+			        RELATED('Exchange Rate'[INR_TO_AED])
+			
+			    VAR AEDtoINR =
+			        RELATED('Exchange Rate'[Aed to Inr])
+			
+			    VAR Amount =
+			        'Account Transaction'[debit]
+			
+			
+			    RETURN
+			
+			    SWITCH(
+			
+			        SelectedCurrency,
+			
+			        "Base",
+			            Amount,
+			
+			        "INR",
+			            IF(
+			                IsINRCompany,
+			                Amount,
+			                Amount * AEDtoINR
+			            ),
+			
+			        "AED",
+			            IF(
+			                IsINRCompany,
+			                Amount * INRtoAED,
+			                Amount
+			            )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 067517c9-1365-482d-b80c-81fca88c339c
+
+	measure 'Converted Amount' =
+			
+			
+			VAR SelectedCurrency =
+			    SELECTEDVALUE(
+			        CurrencySelector[Currency],
+			        "Base"
+			    )
+			
+			RETURN
+			
+			SUMX(
+			    'Account Transaction',
+			
+			    VAR CompanyName =
+			        TRIM(UPPER('Account Transaction'[_company_name]))
+			
+			    VAR IsINRCompany =
+			        CompanyName IN {"IQRA IT","IQRA TECH"}
+			
+			    VAR INRtoAED =
+			        RELATED('Exchange Rate'[INR_TO_AED])
+			
+			    VAR AEDtoINR =
+			        RELATED('Exchange Rate'[Aed to Inr])
+			
+			    VAR Amount =
+			       'Account Transaction'[Amountt]
+			
+			
+			    RETURN
+			
+			    SWITCH(
+			
+			        SelectedCurrency,
+			
+			        "Base",
+			            Amount,
+			
+			        "INR",
+			            IF(
+			                IsINRCompany,
+			                Amount,
+			                Amount * AEDtoINR
+			            ),
+			
+			        "AED",
+			            IF(
+			                IsINRCompany,
+			                Amount * INRtoAED,
+			                Amount
+			            )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 24b6106d-2a81-42c7-81f9-e4b02fde7167
+
+	measure 'Amount Converted bs' =
+			
+			
+			VAR SelectedCurrency =
+			    SELECTEDVALUE(
+			        CurrencySelector[Currency],
+			        "Base"
+			    )
+			
+			RETURN
+			
+			SUMX(
+			    'Account Transaction',
+			
+			    VAR CompanyName =
+			        TRIM(UPPER('Account Transaction'[_company_name]))
+			
+			    VAR IsINRCompany =
+			        CompanyName IN {"IQRA IT","IQRA TECH"}
+			
+			    VAR INRtoAED =
+			        RELATED('Exchange Rate'[INR_TO_AED])
+			
+			    VAR AEDtoINR =
+			        RELATED('Exchange Rate'[Aed to Inr])
+			
+			    VAR Amount =
+			        BS[BS Category Amount]
+			
+			
+			    RETURN
+			
+			    SWITCH(
+			
+			        SelectedCurrency,
+			
+			        "Base",
+			            Amount,
+			
+			        "INR",
+			            IF(
+			                IsINRCompany,
+			                Amount,
+			                Amount * AEDtoINR
+			            ),
+			
+			        "AED",
+			            IF(
+			                IsINRCompany,
+			                Amount * INRtoAED,
+			                Amount
+			            )
+			    )
+			)
+		lineageTag: ae923726-6fe3-44f5-9f03-ba2ab99e557a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Amount Converted 2' =
+			
+			
+			VAR SelectedCurrency =
+			    SELECTEDVALUE(
+			        CurrencySelector[Currency],
+			        "Base"
+			    )
+			
+			RETURN
+			
+			SUMX(
+			    'Account Transaction',
+			
+			    VAR CompanyName =
+			        TRIM(UPPER('Account Transaction'[_company_name]))
+			
+			    VAR IsINRCompany =
+			        CompanyName IN {"IQRA IT","IQRA TECH"}
+			
+			    VAR INRtoAED =
+			        RELATED('Exchange Rate'[INR_TO_AED])
+			
+			    VAR AEDtoINR =
+			        RELATED('Exchange Rate'[Aed to Inr])
+			
+			    VAR Amount =
+			        'Account Transaction'[Amountt]
+			
+			
+			    RETURN
+			
+			    SWITCH(
+			
+			        SelectedCurrency,
+			
+			        "Base",
+			            Amount,
+			
+			        "INR",
+			            IF(
+			                IsINRCompany,
+			                Amount,
+			                Amount * AEDtoINR
+			            ),
+			
+			        "AED",
+			            IF(
+			                IsINRCompany,
+			                Amount * INRtoAED,
+			                Amount
+			            )
+			    )
+			)
+		formatString: #,0
+		lineageTag: 504f9be6-c61d-4ae8-8506-f3bc3608cd79
+
+	measure 'Amount Cumulative' =
+			
+			CALCULATE(
+			    SUM('Account Transaction'[Amountt]),
+			    FILTER(
+			        ALLSELECTED('DateTable'[Date]),
+			        'DateTable'[Date] <= MAX('DateTable'[Date])
+			    )
+			)
+		lineageTag: 081c9911-8e0c-47e9-85a8-d272e7f9f641
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		formatString: 0
+		lineageTag: 74a7a218-19e6-4a16-804c-ee294472080b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Check Level' = MAX( 'MAPPING'[Level 1 ])
+		lineageTag: fa4d759b-d3b6-4fa2-ab00-813d762c3642
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'All Measures' = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = c75d9047e3ab48b58edf8fd385fa6192
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

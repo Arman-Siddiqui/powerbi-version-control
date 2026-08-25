@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "80cef6044050a0a96300",
+  "position": {
+    "x": 44.274918780073172,
+    "y": 411.94924430155038,
+    "z": 19000,
+    "height": 914.37332263194594,
+    "width": 2629.5451762426064,
+    "tabOrder": 22000
+  },
+  "visualGroup": {
+    "displayName": "Bank STMT",
+    "groupMode": "ScaleMode"
+  }
+}

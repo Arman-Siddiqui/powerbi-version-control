@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "132c8ac8273900b56a07",
+  "displayName": "Account Balances",
+  "displayOption": "FitToPage",
+  "height": 1300,
+  "width": 2200,
+  "pageBinding": {
+    "name": "477cbae19847765d9e9d",
+    "type": "Default",
+    "parameters": []
+  },
+  "type": "Drillthrough"
+}

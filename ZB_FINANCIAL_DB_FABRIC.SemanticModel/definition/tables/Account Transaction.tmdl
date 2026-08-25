@@ -1,0 +1,364 @@
+table 'Account Transaction'
+	lineageTag: 81d51055-e42c-4366-8a5f-94b3ef32e438
+
+	measure 'Contribution %' =
+			
+			DIVIDE(
+			    [Amount Adjusted],
+			    CALCULATE(
+			        [Amount Adjusted],
+			        ALLSELECTED('MAPPING'[Expense Acc])
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9651ded2-6a2b-4ba5-b822-83bd76210fc7
+
+	column transaction_id
+		dataType: string
+		lineageTag: ffdfd662-b906-46e4-a35f-3023c6ea2dab
+		summarizeBy: none
+		sourceColumn: transaction_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column account_id
+		dataType: string
+		lineageTag: fcc25b64-b4ed-4dcc-90c3-17912972a2c5
+		summarizeBy: none
+		sourceColumn: account_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column account_name
+		dataType: string
+		lineageTag: 8f5501eb-29f8-4003-9d68-ec1382883687
+		summarizeBy: none
+		sourceColumn: account_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column debit
+		dataType: double
+		formatString: #,0
+		lineageTag: 6433e7b8-5c12-4aae-abeb-6607c894e60e
+		summarizeBy: sum
+		sourceColumn: debit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column credit
+		dataType: double
+		formatString: #,0
+		lineageTag: b868cfd8-01b4-448a-bf06-9144ef2b2a40
+		summarizeBy: sum
+		sourceColumn: credit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency_code
+		dataType: string
+		lineageTag: b7a549c3-2626-4115-92a9-46ef9baff6d1
+		summarizeBy: none
+		sourceColumn: currency_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_type
+		dataType: string
+		lineageTag: 9391447c-d255-420a-ae17-18a76a9721b4
+		summarizeBy: none
+		sourceColumn: transaction_type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_details
+		dataType: string
+		lineageTag: a2c1f312-55b3-446a-8bae-229de776566e
+		summarizeBy: none
+		sourceColumn: transaction_details
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amountt = 'Account Transaction'[debit] - 'Account Transaction'[credit]
+		formatString: #,0
+		lineageTag: a9fd743e-7c12-44e7-bb57-79d67df74058
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column PairKey =
+			
+			FORMAT('Account Transaction'[date], "dd-mm-yyyy")
+			    & "|"
+			    & FORMAT(ABS('Account Transaction'[Amountt]), "0.00")
+		lineageTag: 7286639d-389d-4b4b-bd53-b9f191487ad0
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pair Status' =
+			
+			VAR CurrentKey =
+			    'Account Transaction'[PairKey]
+			
+			VAR TotalDebit =
+			    CALCULATE(
+			        SUM('Account Transaction'[debit]),
+			        ALLEXCEPT(
+			            'Account Transaction',
+			            'Account Transaction'[PairKey]
+			        )
+			    )
+			
+			VAR TotalCredit =
+			    CALCULATE(
+			        SUM('Account Transaction'[credit]),
+			        ALLEXCEPT(
+			            'Account Transaction',
+			            'Account Transaction'[PairKey]
+			        )
+			    )
+			
+			RETURN
+			IF(
+			    ROUND(TotalDebit,2) = ROUND(TotalCredit,2),
+			    "Paired",
+			    "Unpaired"
+			)
+		lineageTag: 3781550e-0a3c-470d-8705-8e4504e7ed81
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Acc Type' =
+			
+			IF (
+			    'Account Transaction'[account_name] IN {
+			        "Mashreq Silver Account XAG - 0559",
+			        "Mashreq Trading Account - 8848",
+			        "Mashreq Gold Account XAU - 1536",
+			        "Yasmeen Payable A/C"
+			    },
+			    "Bank Other",
+			    'Account Transaction'[offset_account_type]
+			)
+		lineageTag: 2a00903c-8240-46ca-8fe0-61afe3132e50
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Year' = FORMAT('Account Transaction'[date], "MMM-yyyy")
+		lineageTag: 9e28ef9d-0ee7-46d6-bdbf-aa910f806f45
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a45cf053-9735-4f63-9764-adb08c99cc1c
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column reference_transaction_id
+		dataType: string
+		lineageTag: 7391a12b-39da-4eb2-a7a9-1c103afe33cb
+		summarizeBy: none
+		sourceColumn: reference_transaction_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column offset_account_id
+		dataType: string
+		lineageTag: 30e34c3b-c3ea-4d11-834c-4aa646ca85d2
+		summarizeBy: none
+		sourceColumn: offset_account_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column offset_account_type
+		dataType: string
+		lineageTag: e0d32c5c-132b-4f7f-9d40-7ba8c5836e8b
+		summarizeBy: none
+		sourceColumn: offset_account_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column reference_number
+		dataType: string
+		lineageTag: 07993c45-14bb-4874-a2e6-8377d2412581
+		summarizeBy: none
+		sourceColumn: reference_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity_number
+		dataType: string
+		lineageTag: 84f07d91-e86a-4d72-b534-be5356990a10
+		summarizeBy: none
+		sourceColumn: entity_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_amount
+		dataType: double
+		lineageTag: 5cd04610-5686-4397-82cb-44282eaa6736
+		summarizeBy: sum
+		sourceColumn: net_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column contact_id
+		dataType: string
+		lineageTag: bce817cd-65b3-46d7-ab46-a59f8aa90301
+		summarizeBy: none
+		sourceColumn: contact_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_ids
+		dataType: string
+		lineageTag: f781602a-8325-417a-aa07-e40ea6a2ac13
+		summarizeBy: none
+		sourceColumn: project_ids
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch
+		dataType: string
+		lineageTag: cb9281cf-ae4e-412e-a65c-36b394f3baf2
+		summarizeBy: none
+		sourceColumn: branch
+
+		annotation SummarizationSetBy = Automatic
+
+	column _org_key
+		dataType: string
+		lineageTag: 61426b67-ba3b-4e36-9c7c-a5bc30877f6c
+		summarizeBy: none
+		sourceColumn: _org_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column _org_id
+		dataType: string
+		lineageTag: b4ffe36f-5912-418c-9fe8-4a5b2552d8b6
+		summarizeBy: none
+		sourceColumn: _org_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column _company_name
+		dataType: string
+		lineageTag: b38ed612-ed09-43ba-8ab0-67bbf787e383
+		summarizeBy: none
+		sourceColumn: _company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column _source
+		dataType: string
+		lineageTag: 120e020d-a933-44fb-82b0-16befff68f7f
+		summarizeBy: none
+		sourceColumn: _source
+
+		annotation SummarizationSetBy = Automatic
+
+	column _lakehouse_table
+		dataType: string
+		lineageTag: 5c501190-d806-431c-a2f0-a4684fd4ede8
+		summarizeBy: none
+		sourceColumn: _lakehouse_table
+
+		annotation SummarizationSetBy = Automatic
+
+	column _fetched_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e26e5545-2db9-4641-9f2d-88298433aa64
+		summarizeBy: none
+		sourceColumn: _fetched_at
+
+		variation Variation
+			isDefault
+			relationship: 860f3f25-8f5f-44e6-a10c-6a78d5da62e0
+			defaultHierarchy: LocalDateTable_b5b5540b-31ef-4fe7-9496-c7fcbf9200ad.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column _report_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 64d9c83e-cb19-4cad-897b-0d11c9bb185b
+		summarizeBy: none
+		sourceColumn: _report_start
+
+		variation Variation
+			isDefault
+			relationship: 539b9506-ed9e-4f71-a56f-1962200d928b
+			defaultHierarchy: LocalDateTable_ebab9514-a606-44fb-bb51-c7010985b423.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column _report_end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 807e0995-6a6c-4eda-a752-ff9b2ae09e4f
+		summarizeBy: none
+		sourceColumn: _report_end
+
+		variation Variation
+			isDefault
+			relationship: 84849d6f-ae16-4be6-abaa-5519f93bb58c
+			defaultHierarchy: LocalDateTable_c8b9affb-43bb-4876-b3a0-130865f556f7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Account Transaction' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("jqxnwwvnoenehap22sg2n7tlia-to6c3xvgofvezbuoyrhiwgcrdm.datawarehouse.fabric.microsoft.com", "Zoho_Books_Lakehouse"),
+				    dbo_gold_all_companies = Source{[Schema="dbo",Item="gold_all_companies"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_gold_all_companies,{{"date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,60 @@
+table 'Exchange Rate'
+	lineageTag: 0d41af7f-e02d-4038-9508-f36beedaf192
+
+	column Month
+		dataType: string
+		lineageTag: 2c5e27d7-875d-4201-812d-56051f643e68
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: e39ee366-b576-4277-ab1c-0ecb376fcb1d
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month-Year
+		dataType: string
+		lineageTag: a5a63ffb-d133-4966-9083-866245f3d25e
+		summarizeBy: none
+		sourceColumn: Month-Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column INR_TO_AED = ROUND(1 / 'Exchange Rate'[Aed to Inr], 3)
+		formatString: 0.000
+		lineageTag: 77c395c5-d2ad-4bbb-ba81-35cf3ad6454d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Aed to Inr'
+		dataType: double
+		lineageTag: 785db170-e3a7-4ebc-939f-b0d7dcfd976c
+		summarizeBy: sum
+		sourceColumn: Aed to Inr
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Exchange Rate' = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("ddfBatwwFIXhd5l1OliyZMnLQuki0HbRZchiGkI3Jg1DU5i3r2Lfe66OpKwM4kMa+R8pk4eH0/3l5XR38pNby8Ot5ymXZxn8JEPTeYr+9Hj3cPr6/IvkHMqzDPby2+XayzLYy8+vLKdUnmVwNOetkvm8Lvuct1rOu7x/e+llGRzJjaXf5dbLz2+/eUfvc5bB/nP+fH5lOZVnGezlj6e/LN+fZbCX3//86+csg7388vxEMsbyLIO1dMfepbufDhlmdN+HTGp3lYt1b6R234f9dA4R3VWGlbqrzCu6Q2bqrnJ16N5I7Y45M7p3ciO5JHRvpHZXub/5o3uzI+2u0kV0x1uaqLtK79G9mVO7q5wiujdzanes7tC9kejujprrZN0dSXRXOVt3luiu0s57I9HdyY6ydW/nvLGM1p0luqtcrXsrN5J7I+nefE7tLnJ/Snc37q5yte4s0V1ltO4s0V1kCNadJbrXUrqzRHcvMll3TxLdRS7OurNEd5GxOu8s0V1Xr857O+eN5H6KpbvK5rzv0p1dsO4qE3cXGSfrzhLdReZg3VUu3H2X/jwt1l1l5O4y5346pDvPie4yp8vWnedEd5He7vlGovt8yOCt+0wS3VVO1p0lutdSurNEd5XRurdz3lgm684S3VXO1r2VG8tg3ZvPqd1FRvv7Dhm4u8pg3Vmiu8pk3Vmiu8j9xEl3luiuc2brzhLdQ7Uj6R5IonuoVpfuLNFd56zOO0t0F5mcdW/nvLGcrDtLdFdZdW/lxnKx7s3n1O4i6/POEt1VeuvOEt1VZuvOEt1FrtV5Z4nuu5yPu066q5y5e6x2JN3juLvIuFp3lugeq2+IdGeJ7rHv3s55Y1l1Z4nusdq7dI+8d+0ucqrueZbornK17izRXeSSrbtK/j1/yHD8jyDdVTruLjLY7/lGorvKZN1Zovv7qj6Wceu+iGx+14l01T3PEt1F+qo7S3QXmbx1Fzk3v5fe36NfjkbyPrPIzDL1Mo3l0suFJBrVq0ujPJapl2ksl17y6uhery7d81imXqaxXHrJq+PE1avLictjmXqZxlJXr/47a1e/jla/jla/jla/9qvjZqjnlJshj2Xq5Qdzyjc5J5P8TcZtw6tvo9W30erbaPWtrymS3yfOO61+Ge39Mtr7ZbB33Az1nHIz5LFMveQ5cYPVc8oNlscy9fKDOZde8lvCPV+vLvd8HsvUyzSWSy+b1V8H33m5FfNYpl5Wqz/+Bw==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Month = _t, Year = _t, #"Aed to Inr" = _t, #"Month-Year" = _t, INR_TO_AED = _t]),
+				  #"Changed column type" = Table.TransformColumnTypes(Source, {{"Month", type text}, {"Year", Int64.Type}, {"Aed to Inr", type number}, {"Month-Year", type date}, {"INR_TO_AED", type number}}, "en-US"),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed column type",{"INR_TO_AED", "Month-Year"}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Removed Columns", "Month-Year", each Text.Combine({[Month], "-", Text.From([Year], "en-US")}), type text)
+				in
+				    #"Inserted Merged Column"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "265f8b0e31d7e6e801d4",
+      "displayName": "AT",
+      "children": [
+        "faa0858164360dada9b1",
+        "c4a6a3869b2785224866"
+      ]
+    },
+    {
+      "name": "4ee7ee516e6c1256d209",
+      "displayName": "Expense",
+      "children": [
+        "1893e11b0a61a3e69e80",
+        "e9144e30249a647e3b43",
+        "ac3c3000133b023142d9"
+      ]
+    },
+    {
+      "name": "592384b60d44493a8bed",
+      "displayName": "PNL ",
+      "children": [
+        "d3a650404c7182072a6b",
+        "ef1464162e4e80ab4824",
+        "957cb0295e73bab144d0",
+        "f4d83c006a10e75b8db0"
+      ]
+    },
+    {
+      "name": "9ad020a0b5b075de3683",
+      "displayName": "PNL IN",
+      "children": [
+        "13d20e8716b8d8a8eca6",
+        "9b1028c1e1bb545a8947",
+        "a045fe966b25bcbb6085",
+        "8936f827a310140338bc"
+      ]
+    },
+    {
+      "name": "8719cc60914e93a50cc6",
+      "displayName": "PNL GL",
+      "children": [
+        "f93abb34cb0d9d93400b",
+        "90bec46278eed0a82942",
+        "2a8a1c8d4ee20ecad8a4",
+        "6d9443a0a98c96ab9805"
+      ]
+    },
+    {
+      "name": "ec8e02aab0381c9c8305",
+      "displayName": "Bank Statement ",
+      "children": [
+        "02850e072718597562a3",
+        "9c4f1831e81aeea929ae"
+      ]
+    },
+    {
+      "name": "34af862b96c5c3e312b0",
+      "displayName": "Audit Page cpy toggle",
+      "children": [
+        "6490d7695dac907e6002",
+        "2af81015a9e9243f1f9f"
+      ]
+    },
+    {
+      "name": "229ab5ebce4cba897f82",
+      "displayName": "AU INDIA BUTTONS ",
+      "children": [
+        "28ca6f215f9feea9a091",
+        "46b1711369b81b63e87c",
+        "97100249ff863a6e0674",
+        "c97f1071f6a0e31ea638"
+      ]
+    },
+    {
+      "name": "2d6ba5ed78e5758c0efd",
+      "displayName": "AU GULF ",
+      "children": [
+        "c90f5b9aab5ee212ac09",
+        "6b590b38c62e9cb0408a",
+        "8d7e5d40631535f54605",
+        "871ca56e66b1b7524c17"
+      ]
+    },
+    {
+      "name": "6db1749bc780b9c424cc",
+      "displayName": "Er",
+      "children": [
+        "6d79ecd545b085acc361",
+        "3f9f1d8f7a90569bbd83"
+      ]
+    },
+    {
+      "name": "4cc4a2ccaa5d10404682",
+      "displayName": "Account Balance",
+      "children": [
+        "804d92ac53c77060a569",
+        "cc8bcd33b5973d1019a9"
+      ]
+    }
+  ]
+}

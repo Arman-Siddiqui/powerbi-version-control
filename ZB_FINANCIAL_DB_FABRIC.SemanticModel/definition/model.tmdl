@@ -1,0 +1,37 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'All Companies'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Account Transaction","MAPPING","Exchange Rate","etl_run_log","gold_all_companies (2)"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_91ebfcff-13cf-4db4-ac6f-251ec78e95b8
+ref table DateTable
+ref table 'All Measures'
+ref table 'Expense Change %'
+ref table Account_Selector
+ref table 'Account Transaction'
+ref table MAPPING
+ref table 'Exchange Rate'
+ref table CurrencySelector
+ref table P&L
+ref table BS
+ref table LocalDateTable_b5b5540b-31ef-4fe7-9496-c7fcbf9200ad
+ref table LocalDateTable_ebab9514-a606-44fb-bb51-c7010985b423
+ref table LocalDateTable_c8b9affb-43bb-4876-b3a0-130865f556f7
+ref table etl_run_log
+
+ref cultureInfo en-IN
+

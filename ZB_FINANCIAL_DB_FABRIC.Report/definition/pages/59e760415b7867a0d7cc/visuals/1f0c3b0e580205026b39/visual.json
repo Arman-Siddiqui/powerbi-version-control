@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "1f0c3b0e580205026b39",
+  "position": {
+    "x": 55.385434695779523,
+    "y": 365.54386899214484,
+    "z": 15000,
+    "height": 68.41174918326908,
+    "width": 929.07388196501654,
+    "tabOrder": 13000
+  },
+  "visualGroup": {
+    "displayName": "Ind Buttons",
+    "groupMode": "ScaleMode"
+  }
+}

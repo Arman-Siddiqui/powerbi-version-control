@@ -1,0 +1,217 @@
+table DateTable
+	lineageTag: cf2af0e4-9d7f-4a52-ad4a-4dc2f785452c
+	dataCategory: Time
+
+	measure 'Dynamic Month Order' = ```
+			
+			VAR SelectedCompany = SELECTEDVALUE('Account Transaction'[_company_name])
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    
+			    SelectedCompany IN {"IQRA TECH","IQRA IT"}, 
+			        SWITCH(
+			            MONTH(MAX('DateTable'[Date])),
+			            4,1, 5,2, 6,3, 7,4, 8,5, 9,6,
+			            10,7, 11,8, 12,9, 1,10, 2,11, 3,12
+			        ),
+			
+			    MONTH(MAX('DateTable'[Date]))
+			)
+			```
+		formatString: 0
+		lineageTag: 302b98bb-68b2-48ff-b41d-6e6cb34669f4
+
+	column Date
+		isKey
+		formatString: Long Date
+		lineageTag: e1f061d1-3b9d-4af8-9511-57762c0ee7ad
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		formatString: 0
+		lineageTag: b98f175f-1d78-4365-b9bd-1621b646a38a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+		sortByColumn: 'Year Sort Desc'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		formatString: 0
+		lineageTag: 2dde66b3-85a3-449c-9e28-c1a2cbf3cd03
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		lineageTag: f2aec0a1-4cd8-4ed2-af10-5f01e026fe81
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Name]
+		sortByColumn: 'FY Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: b6b7e30d-c8a0-41e6-859b-1303d1910fd6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year-Month
+		lineageTag: f62629ff-6737-49a4-bb14-2dd8be1c187e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year-Month]
+		sortByColumn: 'Month Year Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Financial Year'
+		lineageTag: b7b6cab5-1a84-4256-b126-75926316cf68
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Financial Year]
+		sortByColumn: 'FY Sort Desc'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Start Year'
+		formatString: 0
+		lineageTag: 79a0db41-a29f-4b34-a3d0-6f897ea3fe0f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FY Start Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Month Number'
+		formatString: 0
+		lineageTag: 5beb696a-d604-4e10-b7cc-9ee77ed3f4f3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FY Month Number]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Quarter'
+		lineageTag: 83e646d6-ae63-46d3-914b-dc1b9dcb5c9b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FY Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Year Sort'
+		formatString: 0
+		lineageTag: 02a3eee4-fa66-4e98-aa49-fc90ef5ed2d9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Year Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Sort'
+		formatString: 0
+		lineageTag: 03f727b2-d418-4362-abb9-145ba00cf242
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FY Sort Desc'
+		formatString: 0
+		lineageTag: 47b802f9-0c25-405d-8f5a-d430cab7faac
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FY Sort Desc]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Sort Desc'
+		formatString: 0
+		lineageTag: ae851afb-9446-4bb3-91f9-3597b835bf7e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Sort Desc]
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Year Hierarchy'
+		lineageTag: b48e079a-d34b-4817-8a40-de6f64329249
+
+		level Year
+			lineageTag: 08fa7f57-18a5-4b7c-93c1-c8e257b31335
+			column: Year
+
+		level Month
+			lineageTag: a7b121e6-fc21-4ae3-87b5-794e97412a9b
+			column: Month
+
+	partition DateTable = calculated
+		mode: import
+		source = ```
+				
+				ADDCOLUMNS(
+				    CALENDAR(DATE(2020,1,1), DATE(2027,12,31)),
+				
+				    -- Basic Columns
+				    "Year", YEAR([Date]),
+				    "Month Number", MONTH([Date]),
+				    "Month Name", FORMAT([Date], "MMM"),
+				    "Month", FORMAT([Date], "MMM"),
+				    "Year-Month", FORMAT([Date], "YYYY-MMM"),
+				
+				    -- Indian Financial Year
+				    "Financial Year",
+				        VAR YearValue = YEAR([Date])
+				        VAR MonthValue = MONTH([Date])
+				        RETURN 
+				        IF(
+				            MonthValue >= 4,
+				            YearValue & "-" & RIGHT(YearValue + 1,2),
+				            (YearValue - 1) & "-" & RIGHT(YearValue, 2)
+				        ),
+				
+				    -- Financial Year Start Year (for sorting)
+				    "FY Start Year",
+				        IF(MONTH([Date]) >= 4, YEAR([Date]), YEAR([Date]) - 1),
+				    "Month Year Sort",
+				    YEAR([Date]) * 100 + MONTH([Date]),
+				    "Year Sort",
+				    YEAR([Date]),
+				    "FY Sort Desc",
+				    -IF(
+				        MONTH([Date]) >= 4,
+				        YEAR([Date]),
+				        YEAR([Date]) - 1
+				    ),"Year Sort Desc",
+				-YEAR([Date]),
+				
+				    -- Financial Month Number (Apr = 1, Mar = 12)
+				    "FY Month Number",
+				        MOD(MONTH([Date]) - 4, 12) + 1,
+				
+				    -- Financial Quarter
+				    "FY Quarter",
+				        "Q" & ROUNDUP(DIVIDE(MOD(MONTH([Date]) - 4, 12) + 1, 3), 0)
+				)
+				```
+
+	annotation PBI_Id = b4a63ad2b85d4002b577dbb74da48e36
+

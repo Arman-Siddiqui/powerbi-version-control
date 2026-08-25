@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ff5a943053640e8b4301",
+  "displayName": "LINK ACCOUNT ",
+  "displayOption": "FitToPage",
+  "height": 1300,
+  "width": 2200,
+  "pageBinding": {
+    "name": "cec064c96807101a92c0",
+    "type": "Default",
+    "parameters": []
+  },
+  "type": "Drillthrough",
+  "visualInteractions": [
+    {
+      "source": "cb4223470e081c938ce6",
+      "target": "27dfb5dcee9b555a6807",
+      "type": "DataFilter"
+    }
+  ]
+}

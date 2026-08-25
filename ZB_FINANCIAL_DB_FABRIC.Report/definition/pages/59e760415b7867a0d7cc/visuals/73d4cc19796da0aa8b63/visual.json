@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "73d4cc19796da0aa8b63",
+  "position": {
+    "x": 33.833452043794672,
+    "y": 434.22180801491146,
+    "z": 17000,
+    "height": 830.78152043669286,
+    "width": 2146.7394488084142,
+    "tabOrder": 19000
+  },
+  "visualGroup": {
+    "displayName": "India Matrix",
+    "groupMode": "ScaleMode"
+  }
+}
