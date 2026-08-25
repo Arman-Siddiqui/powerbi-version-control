@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "8eda6110e223cbb54835",
+  "name": "766aa56fcd000401dda9",
   "position": {
-    "x": 687.2877466727856,
-    "y": 449.20767756391217,
-    "z": 13000,
-    "height": 159.51005192384503,
+    "x": 406.53294819534051,
+    "y": 451.45371595173174,
+    "z": 7000,
+    "height": 157.29463453601386,
     "width": 261.41925176407938,
-    "tabOrder": 13000
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,12 +23,12 @@
                       "Entity": "All Measures"
                     }
                   },
-                  "Property": "IT OFFSHORE REV"
+                  "Property": "IT REV"
                 }
               },
-              "queryRef": "All Measures.IT OFFSHORE REV",
-              "nativeQueryRef": "IT OFFSHORE ",
-              "displayName": "IT OFFSHORE "
+              "queryRef": "All Measures.IT REV",
+              "nativeQueryRef": "IQRA IT ",
+              "displayName": "IQRA IT "
             }
           ]
         }
@@ -43,7 +43,7 @@
                     "Entity": "All Measures"
                   }
                 },
-                "Property": "IT OFFSHORE REV"
+                "Property": "IT REV"
               }
             },
             "direction": "Descending"

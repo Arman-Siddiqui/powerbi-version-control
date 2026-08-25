@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "8eda6110e223cbb54835",
+  "name": "fcae1994c6cdc4b80a9e",
   "position": {
-    "x": 687.2877466727856,
-    "y": 449.20767756391217,
-    "z": 13000,
+    "x": 680.549631509327,
+    "y": 285.24687525308423,
+    "z": 12000,
     "height": 159.51005192384503,
     "width": 261.41925176407938,
-    "tabOrder": 13000
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,12 +23,12 @@
                       "Entity": "All Measures"
                     }
                   },
-                  "Property": "IT OFFSHORE REV"
+                  "Property": "GULF REV"
                 }
               },
-              "queryRef": "All Measures.IT OFFSHORE REV",
-              "nativeQueryRef": "IT OFFSHORE ",
-              "displayName": "IT OFFSHORE "
+              "queryRef": "All Measures.GULF REV",
+              "nativeQueryRef": "GULF LLC",
+              "displayName": "GULF LLC"
             }
           ]
         }
@@ -43,7 +43,7 @@
                     "Entity": "All Measures"
                   }
                 },
-                "Property": "IT OFFSHORE REV"
+                "Property": "GULF REV"
               }
             },
             "direction": "Descending"
