@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "8c09b415a1b1a6c69bc5",
   "position": {
     "x": 1402.3592064971376,
@@ -23,32 +23,15 @@
                       "Entity": "DateTable"
                     }
                   },
-                  "Property": "Financial Year"
+                  "Property": "Year"
                 }
               },
-              "queryRef": "DateTable.Financial Year",
-              "nativeQueryRef": "Financial Year",
+              "queryRef": "DateTable.Year",
+              "nativeQueryRef": "Year",
               "active": true
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "DateTable"
-                  }
-                },
-                "Property": "Financial Year"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ]
       }
     },
     "objects": {
@@ -177,6 +160,7 @@
           }
         },
         "type": "Categorical",
+        "howCreated": "User",
         "objects": {
           "general": [
             {
@@ -277,7 +261,6 @@
             }
           ]
         },
-        "howCreated": "User",
         "objects": {
           "general": [
             {
